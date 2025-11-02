@@ -1,57 +1,62 @@
 <template>
   <div class="froth">
-    <div v-for=" in 5" class="foam"></div>
+    <div v-for="n in 5" :key="n" class="foam"></div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineProps<{
+  isIced?: boolean;
+}>();
+</script>
+
 <style lang="scss" scoped>
 .froth {
-  overflow: visible;
-  transform: translateY(400%);
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 20%;
   width: 100%;
-  background-color: #c6c6c6;
-  animation: pour-tea 2s 2s forwards;
+  background-color: #d4cfc0; /* Slightly darker base */
+  z-index: 10;
 }
+
 .foam {
   display: block;
-  background: #e4e0d2;
-  border-radius: 30px;
+  background: #f0ede3; 
+  border-radius: 50%;
   height: 40px;
   width: 40px;
   position: absolute;
+  top: 0px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
 }
 
 .foam:nth-child(1) {
-  top: 0px;
   left: -3px;
 }
 
 .foam:nth-child(2) {
-  top: 0px;
   left: 55px;
 }
 
 .foam:nth-child(3) {
   width: 30px;
   height: 30px;
-  border-radius: 40px;
-  top: 3px;
   left: 30px;
+  top: 3px;
 }
 
 .foam:nth-child(4) {
   width: 30px;
   height: 30px;
-  border-radius: 45px;
-  top: 5px;
   right: -2px;
+  top: 5px;
 }
 
 .foam:nth-child(5) {
-  top: 2px;
   right: 10px;
+  top: 2px;
 }
 </style>
