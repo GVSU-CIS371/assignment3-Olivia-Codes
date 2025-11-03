@@ -2,10 +2,7 @@
   <div id="app">
    
     <Beverage 
-      :isIced="store.currentTemp === 'Cold'" 
-      :drink="store.currentBase" 
-      :creamer="store.currentCreamer"
-      :syrup="store.currentSyrup"
+      :beverage="currentBeverageObject"
     />
     
 
@@ -49,7 +46,7 @@
                 type="radio"
                 name="drink"
                 :id="beverage.id"
-                :value="beverage.name"
+                :value="beverage.id"
                 v-model="store.currentBase"
               />
               {{ beverage.name }}
@@ -65,7 +62,7 @@
                 type="radio"
                 name="creamer"
                 :id="creamer.id"
-                :value="creamer.name"
+                :value="creamer.id"
                 v-model="store.currentCreamer"
               />
               {{ creamer.name }}
@@ -81,7 +78,7 @@
                 type="radio"
                 name="syrup"
                 :id="syrup.id"
-                :value="syrup.name"
+                :value="syrup.id"
                 v-model="store.currentSyrup"
               />
               {{ syrup.name }}
@@ -110,11 +107,29 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue';
 import Beverage from "./components/Beverage.vue";
 import { useBeverageStore } from "./stores/beverageStore";
-
+import type { BeverageType } from './types/beverage';
 
 const store = useBeverageStore();
+
+// Create a computed beverage object from the current selections
+const currentBeverageObject = computed((): BeverageType => {
+  // Find the full objects based on current IDs
+  const base = store.bases.find(b => b.id === store.currentBase) || store.bases[0];
+  const creamer = store.creamers.find(c => c.id === store.currentCreamer) || store.creamers[0];
+  const syrup = store.syrups.find(s => s.id === store.currentSyrup) || store.syrups[0];
+  
+  return {
+    id: '', // Temporary ID for preview
+    name: store.beverageName || 'Preview',
+    temp: store.currentTemp,
+    base,
+    creamer,
+    syrup
+  };
+});
 </script>
 
 <style lang="scss">
@@ -154,7 +169,6 @@ html {
   margin-bottom: 20px;
   padding: 15px;
   background: white;
-  //background: rgba(255, 255, 255, 0.15);
   border-radius: 8px;
   
   label {
@@ -166,11 +180,9 @@ html {
   input[type="text"] {
     flex: 1;
     padding: 8px 12px;
-    //border: 2px solid #fff;
     border: 2px solid white;
     border-radius: 5px;
     font-size: 14px;
-    //background: rgba(255, 255, 255, 0.9);
     background: white;
     
     &:focus {
