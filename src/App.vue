@@ -153,11 +153,12 @@ html {
   gap: 10px;
   margin-bottom: 20px;
   padding: 15px;
-  background: rgba(255, 255, 255, 0.15);
+  background: white;
+  //background: rgba(255, 255, 255, 0.15);
   border-radius: 8px;
   
   label {
-    color: #fff;
+    color: black;
     font-weight: bold;
     font-size: 16px;
   }
@@ -165,15 +166,17 @@ html {
   input[type="text"] {
     flex: 1;
     padding: 8px 12px;
-    border: 2px solid #fff;
+    //border: 2px solid #fff;
+    border: 2px solid white;
     border-radius: 5px;
     font-size: 14px;
-    background: rgba(255, 255, 255, 0.9);
+    //background: rgba(255, 255, 255, 0.9);
+    background: white;
     
     &:focus {
       outline: none;
-      border-color: #ffd89b;
-      background: #fff;
+      border-color: purple;
+      background: white;
     }
   }
   
@@ -210,7 +213,7 @@ ul {
     flex-wrap: wrap;
     
     h3 {
-      color: #fff;
+      color: white;
       margin-right: 15px;
       margin-bottom: 0;
       font-size: 16px;
@@ -258,7 +261,7 @@ ul {
     
     .beverage-btn {
       padding: 10px 20px;
-      background: rgba(255, 255, 255, 0.2);
+      background: darkgray;
       color: white;
       border: 2px solid rgba(255, 255, 255, 0.3);
       border-radius: 20px;
@@ -272,9 +275,9 @@ ul {
       }
       
       &.active {
-        background: #ffd89b;
-        color: #6e4228;
-        border-color: #ffd89b;
+        background: pink;
+        color: white;
+        border-color: white;
         font-weight: bold;
       }
     }
