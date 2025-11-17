@@ -3,6 +3,7 @@ import temperatures from "../data/tempretures.json";
 import bases from "../data/bases.json";
 import creamers from "../data/creamers.json";
 import syrups from "../data/syrups.json";
+//Correct
 
 interface Beverage {
   name: string;

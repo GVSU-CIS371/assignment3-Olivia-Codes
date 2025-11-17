@@ -16,7 +16,7 @@
           placeholder="Enter beverage name"
         />
         <button @click="store.makeBeverage()" class="make-beverage-btn">
-          Make Beverage
+          🍺 Make Beverage
         </button>
       </div>
       
@@ -46,7 +46,7 @@
                 type="radio"
                 name="drink"
                 :id="beverage.id"
-                :value="beverage.id"
+                :value="beverage.id" 
                 v-model="store.currentBase"
               />
               {{ beverage.name }}

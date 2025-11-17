@@ -33,3 +33,4 @@ defineProps<{
   }
 }
 </style>
+ <!-- This is an HTML comment in the template -->
